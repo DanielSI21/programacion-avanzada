@@ -19,8 +19,8 @@
     </canvas>
 
     <script type="text/javascript">
-        var cv = document.getElementById('mycanvas');
-        var ctx = cv.getContext('2d');
+        // var cv = document.getElementById('mycanvas');
+        // var ctx = cv.getContext('2d');
 
         //actividad 2
         // ctx.fillStyle = "rgb(0,0,200)";
@@ -248,34 +248,34 @@
         // });
 
         //actividad 17
-        var super_x = 0, super_y = 0;
+        // var super_x = 0, super_y = 0;
         
-        document.addEventListener('keydown', function(e){
-            console.log(e);
-            if (e.key == "ArrowUp" || e.key == "w"){
-                super_y-=7;
-            }
-            if (e.key == "ArrowDown" || e.key == "s"){
-                super_y+=7;
-            }
-            if (e.key == "ArrowLeft" || e.key == "a"){
-                super_x-=7;
-            }
-            if (e.key == "ArrowRight" || e.key == "d"){
-                super_x+=7;
-            }       
-            paint();          
-        });
+        // document.addEventListener('keydown', function(e){
+        //     console.log(e);
+        //     if (e.key == "ArrowUp" || e.key == "w"){
+        //         super_y-=7;
+        //     }
+        //     if (e.key == "ArrowDown" || e.key == "s"){
+        //         super_y+=7;
+        //     }
+        //     if (e.key == "ArrowLeft" || e.key == "a"){
+        //         super_x-=7;
+        //     }
+        //     if (e.key == "ArrowRight" || e.key == "d"){
+        //         super_x+=7;
+        //     }       
+        //     paint();          
+        // });
 
-        function paint(){
-            ctx.fillStyle = "rgb(55, 55, 55)";
-            ctx.fillRect(0,0, 500, 500);
-            ctx.fillStyle = "red";
-            ctx.fillRect(super_x, super_y, 40, 40);
-            ctx.strokeRect(super_x, super_y, 40, 40);
-            // var img = document.getElementById('imagen');
-            // ctx.drawImage(img, super_x, super_y, 100, 100);
-        }
+        // function paint(){
+        //     ctx.fillStyle = "rgb(55, 55, 55)";
+        //     ctx.fillRect(0,0, 500, 500);
+        //     ctx.fillStyle = "red";
+        //     ctx.fillRect(super_x, super_y, 40, 40);
+        //     ctx.strokeRect(super_x, super_y, 40, 40);
+        //     // var img = document.getElementById('imagen');
+        //     // ctx.drawImage(img, super_x, super_y, 100, 100);
+        // }
 
         //actividad 18
         // cv.addEventListener('click', function(e){
@@ -286,6 +286,129 @@
         //     ctx.font = "10px Arial";
         //     ctx.fillText(texto, x, y);
         // });
+
+        //actividad 18 y 19
+        // var super_x = 200, super_y = 110;
+        // var super_color = "rgb(243, 207, 187)";
+        // var super_size = 30;
+        
+        // document.addEventListener('keydown', function(e){
+        //     console.log(e);
+        //     if (e.key == "ArrowUp"){
+        //         super_y-=7;
+        //     }
+        //     if (e.key == "ArrowDown"){
+        //         super_y+=7;
+        //     }
+        //     if (e.key == "ArrowLeft"){
+        //         super_x-=7;
+        //     }
+        //     if (e.key == "ArrowRight"){
+        //         super_x+=7;
+        //     }
+        //     if (e.key == "a"){
+        //         super_color = "rgb(135, 206, 235)";
+        //     } 
+        //     if (e.key == "c"){
+        //         super_color = "rgb(165, 126, 110)";
+        //     } 
+        //     if (e.key == "n"){
+        //         super_color = "rgb(231, 215, 190)";
+        //     }
+        //     if (e.key == "v"){
+        //         super_color = "rgb(141, 182, 0)";
+        //     }  
+        //     if (e.key == "y"){
+        //         super_color = "rgb(255, 255, 0)";
+        //     }  
+        //     if (e.key == "m"){
+        //         super_color = "rgb(14, 77, 146)";
+        //     }
+        //     if (e.key == "b"){
+        //         super_color = "rgb(255, 255, 255)";
+        //     }    
+        //     if (e.key == "t"){
+        //         super_size = 7;
+        //     }
+        //     if (e.key == "y"){
+        //         super_size = 10;
+        //     }
+        //     if (e.key == "u"){
+        //         super_size = 20;
+        //     }  
+        //     if (e.key == "i"){
+        //         super_size = 30;
+        //     }
+        //     if (e.key == "o"){
+        //         super_size = 50;
+        //     }      
+        //     if (e.key == "g"){
+        //         super_color = "rgb(50, 50, 50)";
+        //     }                   
+        //     paint();          
+        // });
+
+        // function paint(){
+        //     ctx.fillStyle = "rgb(55, 55, 55)";
+        //     // ctx.fillRect(0,0, 500, 500);
+        //     ctx.fillStyle = super_color;
+        //     ctx.fillRect(super_x, super_y, super_size, super_size);
+        //     // ctx.strokeRect(super_x, super_y, 40, 40);
+        //     // var img = document.getElementById('imagen');
+        //     // ctx.drawImage(img, super_x, super_y, 100, 100);
+        // }
+
+        // cv.addEventListener('click', function(e){
+        //     let x = e.offsetX;
+        //     let y = e.offsetY;
+        //     ctx.beginPath();
+        //     ctx.fillStyle = "red";
+        //     ctx.fillRect(super_x, super_y, 40, 40);
+        // });
+
+        //actividad 20
+        var cv = null;
+        var ctx = null;
+        var press = false;
+
+        var super_x = 0, super_y = 200;
+        
+        function run()
+        {
+            cv = document.getElementById('mycanvas');
+            ctx = cv.getContext('2d');
+            paint();
+        }
+
+        function paint(){
+
+            window.requestAnimationFrame(paint);
+
+            ctx.fillStyle = "rgb(55, 55, 55)";
+            ctx.fillRect(0,0, 500, 500);
+            ctx.fillStyle = "red";
+            ctx.fillRect(super_x, super_y, 40, 40);
+            // ctx.strokeRect(super_x, super_y, 40, 40);
+
+            super_x+=5;
+
+            if (super_x>500){
+                super_x = 0;
+            }
+        }
+        
+        window.requestAnimationFrame = (function () {
+            return window.requestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            function (callback) {
+                window.setTimeout(callback, 17);
+        };
+
+        }());
+
+        window.addEventListener('load',run,false);
+
     </script>
 </body>
 </html>
