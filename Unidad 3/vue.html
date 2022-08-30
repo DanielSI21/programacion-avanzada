@@ -10,10 +10,9 @@
 <body>
     <div id="contenedor">
 
+        <h1>Actividad 5</h1>
         <input type="text" v-model="num_1" name="input-1">
-
         <input type="text" v-model="num_2" name="input-2">
-
 
         <h1>
             El resultado es : {{resultado}}
@@ -21,6 +20,36 @@
 
         <button @click="suma">
             Sumar
+        </button>
+
+        <hr>
+
+        <h1>Actividad 5.2</h1>
+        <h1>Bienvenido al bar</h1>
+        <h3>Introduzca su edad: </h3>
+        <input type="text" v-model="age" name="input-1">
+
+        <h1 v-if="age < 18">
+            No pase
+        </h1>
+        
+        <h1 v-if="age >= 18">
+            Pase
+        </h1>
+        <hr>
+
+        <h1>Actividad 6</h1>
+        <li v-for="item in items">
+            {{item.name}} : <span> {{item.role}}
+            </span>
+        </li>
+
+        <input type="text" v-model="item_name" name="input-5">
+        <input type="text" v-model="item_role" name="input-6">
+
+        <br>
+        <button @click="save">
+            Save
         </button>
 
     </div>
@@ -34,12 +63,21 @@
                 return{
                     num_1: 0,
                     num_2: 0,
-                    resultado: 0
+                    resultado: 0,
+                    age: 0,
+                    items: [{name: 'item_1', role: '1'},
+                    {name: 'item_2', role: '2'},
+                    {name: 'item_3', role:'3'}],
+                    item_name: "",
+                    item_role: ""
                 }
             },
             methods: {
                 suma(){
                     this.resultado = parseInt(this.num_1)+parseInt(this.num_2)
+                },
+                save(){
+                    this.items.push({name:this.item_name, role:this.item_role})
                 }
             }
         }).mount('#contenedor')
