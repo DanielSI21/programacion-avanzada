@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://unpkg.com/vue@3"></script>
     <title>Vue</title>
 </head>
 <body>
@@ -86,77 +87,6 @@
 
     
     <!-- Actividad 6 -->
-    <!-- <div id="contenedor">
-        
-        <form action="">
-            <fieldset>
-                <legend>
-                    Acceso 
-                </legend>
-
-                <label for="">
-                    Correo electronico
-                </label>
-                
-                <input type="email" v-model="email" name="" id="">
-
-                <label for="">
-                    Password
-                </label>
-
-                <input type="password" v-model="password" name="" id="">
-
-                <button  @click="login"> 
-                    Acceder
-                </button>
-            </fieldset>
-        </form>
-
-    </div>
-
-    <script type="text/javascript">
-        const {createApp} = Vue;
-
-        const app = createApp({
-            data(){
-                return{
-                    users: null,
-                    email: '',
-                    password: ''
-                }
-            },
-            mounted(){
-                fetch('users.json')
-                    .then((res) => res.json())
-                    .then((json) => (this.users= json))
-                    .then((err) => (console.log(err)))
-            },
-            methods:{
-                login(e){
-                    e.preventDefault();
-                    var email_user = this.email;
-                    var password_user = this.password;
-                    var coincidencia = false;
-
-                    var access = this.users.map(function(u){
-                        console.log(this.email)
-                        console.log(this.password)
-                        if (email_user == u.email.toLowerCase()){
-                            if(password_user == u.password){
-                                coincidencia = true;
-                            }
-                        }
-                    })  
-                    if (coincidencia){
-                        alert("Acceso concedido")
-                    }else{
-                        alert("Acceso denegado")
-                    }
-                }
-            }
-        }).mount('#contenedor')
-    </script> -->
-
     <div id="contenedor">
         
         <form action="">
@@ -209,6 +139,8 @@
                     var password_user = this.password;
                     var coincidencia = false;
 
+                    
+
                     var access = this.users.map(function(u){
                         console.log(this.email)
                         console.log(this.password)
@@ -219,8 +151,7 @@
                         }
                     })  
                     if (coincidencia){
-                        // alert("Acceso concedido")
-                        window.location.href="data.html";
+                        alert("Acceso concedido")
                     }else{
                         alert("Acceso denegado")
                     }

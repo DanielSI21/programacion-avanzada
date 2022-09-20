@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>
+			Usuarios
+		</title>
+		<script src="https://unpkg.com/vue@3"></script>
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<style>
+			table, th, td {
+			  border: 2px solid rgb(40, 40, 40);
+			}
+		</style>	
+	</head>
+	<body>
+		<div id="contenedor">
+			<h1>
+				Usuarios
+			</h1>
+			<button @click="action('add',null)">
+				Agregar
+			</button>
+			<table v-if="(inAction=='show')" >
+				<thead>
+					<tr>
+						<td>ID</td>
+						<td>Nombre</td>
+						<td>Nombre de usuario</td>
+						<td>Correo</td>
+						<td>Teléfono</td>
+						<td>Sitio web</td>
+						<td>Acciones</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="u in users" >
+						<td>{{ u.id }}</td>
+						<td>{{ u.name }}</td>
+						<td>{{ u.username }}</td>
+						<td>{{ u.email }}</td>
+						<td>{{ u.phone }}</td>
+						<td>{{ u.website }}</td>
+						<td>
+							<button @click="action('edit',u)">Editar</button>
+							<button @click="remove(u.id)">Eliminar</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<form v-else action="">
+				<fieldset>
+					<label for="">Nombre</label> <br>
+					<input type="text" placeholder="Nombre" v-model="name" required>
+					<br><br>
+
+					<label for="">Nombre de usuario</label> <br>
+					<input type="text" placeholder="Nombre de usuario" v-model="username" required>
+					<br><br>
+
+					<label for="">Correo electrónico</label> <br>
+					<input type="text" placeholder="Correo electrónico" v-model="email" required>
+					<br><br>
+					
+					<label for="">Teléfono</label> <br>
+					<input type="text" placeholder="Teléfono" v-model="phone" required>
+					<br><br>
+
+					<label for="">Sitio web</label> <br>
+					<input type="text" placeholder="Sitio web" v-model="website" required>
+					<br><br>
+
+					<button @click="save" >Guardar</button>
+
+					<button @click="cancel" type="button">Cancelar</button>
+
+					<input type="hidden" v-model="id">
+				</fieldset>
+			</form>
+
+		</div> 
+
+		<script type="text/javascript"> 
+			const { createApp } = Vue;  
+
+			const app = createApp({
+				data(){
+					return {
+						users:null, 
+						inAction: 'show',
+						name:'',
+						id:0,
+					}
+				},
+				methods: {
+					action(action, u){
+						this.inAction = action; 
+						
+						if (action=='edit') {
+							this.name = u.name
+							this.username = u.username
+							this.email = u.email
+							this.phone = u.phone
+							this.website = u.website
+							this.id = u.id 
+						}else{
+							this.name = ''
+							this.username =  ''
+							this.email = ''
+							this.phone =  ''
+							this.website =  ''
+							this.id = 0
+						}
+
+					},
+					cancel(){
+						this.inAction = 'show'; 
+					},
+					save(e){
+
+						e.preventDefault();
+						var access;
+						
+						//Editar registro
+						if (this.inAction=='edit') {
+
+							let id = this.id
+							let name = this.name;
+							let username = this.username;
+							let email = this.email;
+							let phone = this.phone;
+							let website = this.website;
+							
+
+							access = this.users.map(function(u){
+							
+								if ( id == u.id ) {
+
+									u.name = name; 
+									u.username = username;
+									u.email = email;
+									u.phone = phone;
+									u.website = website;
+
+									swal("Guardado", "Registro editado correctamente", "success");
+
+									return true;
+
+								}	 
+							}) 
+
+							if (access.includes(true)) { 
+								this.inAction = 'show'; 
+								 
+							}else{
+								swal("Error", "Error", "error");
+							}
+						
+						//Crear registro
+						}else{
+							this.users.push({id:this.id, name:this.name, username:this.username, email:this.email, phone:this.phone, website:this.website})
+							swal("Guardado", "Registro guardado correctamente", "success");
+							this.inAction = 'show'; 
+						}
+
+						
+					},
+					//Eliminar registro
+					remove(u){
+						swal({
+						  title: "Advertencia",
+						  text: "Una vez eliminado no se podrá recuperar",
+						  icon: "warning",
+						  buttons: true,
+						  dangerMode: true,
+						})
+						.then((willDelete) => {
+						  if (willDelete) {
+						    let c = 0; 
+						    let i = 0;
+
+						    this.users.forEach(function(e){
+						    	if (e.id == u) {
+						    		console.log(e) 
+						    		i = c;
+						    	}
+						    	c++;
+						    });
+
+						    console.log(i)
+						    this.users.splice(i, 1) 
+
+						    swal("Eliminado. Registro eliminado correctamente", {
+						      icon: "success",
+						    });
+
+						  }else {
+						    swal("Registro intacto");
+						  }
+						});
+
+					}
+				},
+				mounted(){
+					fetch('users.json')
+					  .then((res) => res.json())
+					  .then((json) => ( this.users = json ))
+					  .catch((err) => ( console.log(err) ))
+				}
+			}).mount('#contenedor')
+		</script>
+	</body>
+</html>
