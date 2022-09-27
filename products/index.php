@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <?php include "../layouts/head.template.php"; ?>
+    <?php include "../layouts/scripts.template.php"; ?>
 </head>
 <body>
     <!-- navbar -->
@@ -44,7 +45,7 @@
                                     Some quick example text to build on the card title and make up the bulk of the card's content.
                                 </p>
                                 <div class="row">
-                                    <a href="#" class="btn btn-warning col-6" data-bs-target="#exampleModal"> 
+                                    <a href="#" class="btn btn-warning col-6" data-bs-toggle= "modal" data-bs-target="#exampleModal"> 
                                         Editar
                                     </a>
                                     <a onclick="remove(this)" class="btn btn-danger col-6">
@@ -66,8 +67,6 @@
             </div>
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
         function remove(target)
@@ -92,25 +91,6 @@
         }
     </script>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <?php include "../layouts/modal.template.php"; ?>
 </body>
 </html>

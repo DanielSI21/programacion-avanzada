@@ -49,27 +49,29 @@
                         Bienvenido de vuelta
                     </p>
 
-                    <form method="get" class="form" action="products">
+                    <form method="POST" class="form" action="app/AuthController.php">
                         <div>
-                            <label for="">
+                            <label for="email">
                                 Correo electronico
                             </label>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">@</span>
-                                <input type="text" class="form-control" placeholder="Correo" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control" placeholder="Correo" aria-label="Email" aria-describedby="basic-addon1" name="email">
                             </div>
                         </div>
                         <div>
-                            <label for="">
+                            <label for="password">
                                 Contraseña
                             </label>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">@</span>
-                                <input type="text" class="form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control" placeholder="Contraseña" aria-label="Password" aria-describedby="basic-addon1" name="password">
                             </div>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary col-12 mb-3">Acceder</button>
+                        <button type="submit" class="btn btn-primary col-12 mb-3" name="action" value="access">
+                            Acceder
+                        </button>
                     </form>
                 </div>
             </div>
