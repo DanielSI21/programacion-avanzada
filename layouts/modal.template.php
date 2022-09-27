@@ -10,7 +10,7 @@
       <div class="modal-body">
         <div>
           <label for="password">
-              Campo 1
+              Campo
           </label>
           <div class="input-group mb-2">
               <input type="text" class="form-control" placeholder="Campo 1" aria-label="Username" aria-describedby="basic-addon1">
@@ -18,7 +18,7 @@
         </div>
         <div>
           <label for="password">
-              Campo 2
+              Campo
           </label>
           <div class="input-group mb-2">
               <input type="text" class="form-control" placeholder="Campo 2" aria-label="Username" aria-describedby="basic-addon1">
@@ -26,7 +26,7 @@
         </div>
         <div>
           <label for="password">
-              Campo 3
+              Campo
           </label>
           <div class="input-group mb-2">
               <input type="text" class="form-control" placeholder="Campo 3" aria-label="Username" aria-describedby="basic-addon1">
